@@ -1,4 +1,5 @@
-﻿using MovieApi.Application.Features.CQRSDesingPattern.Results.MovieResult;
+﻿using Microsoft.EntityFrameworkCore;
+using MovieApi.Application.Features.CQRSDesingPattern.Results.MovieResult;
 using MovieApi.Persistence.Context;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,10 @@ namespace MovieApi.Application.Features.CQRSDesingPattern.Handlers.MovieHandlers
 		{
 			_context = context;
 		}
-		public async Task<List<GetMovieQueryMovieHandler>> Handle()
+		public async Task<List<GetMovieQueryResult>> Handle()
 		{
 			var values = await _context.Movies.ToListAsync();
-			return values.Select(x=>new GetMovieByIdQueryResult
+			return values.Select(x=>new GetMovieQueryResult
 			{
 				MovieId = x.MovieId,
 				CoverImgUrl = x.CoverImgUrl,

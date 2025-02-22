@@ -19,7 +19,7 @@ namespace MovieApi.Application.Features.CQRSDesingPattern.Handlers.CategoryHandl
 			_context = context;
 		}
 
-		public async Task<List<GetCategoryQueryHandler>> Handle()
+		public async Task<List<GetCategoryQueryResult>> Handle()
 		{
 			var values = await _context.Categories.ToListAsync();
 			return values.Select(x => new GetCategoryQueryResult
