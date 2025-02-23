@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MovieApi.Application.Features.CQRSDesingPattern.Commands.CategoryCommands;
 using MovieApi.Application.Features.CQRSDesingPattern.Handlers.CategoryHandlers;
 
 namespace MovieApi.WebApi.Controllers
@@ -28,6 +29,12 @@ namespace MovieApi.WebApi.Controllers
 		{
 			var value = await _getCategoryQueryHandler.Handle();
 			return Ok(value);
+		}
+		[HttpPost]
+		public async Task<IActionResult> CreateCategory(CreateCategoryCommand command)
+		{
+			await _createCategoryCommandHandler.Handle(command);
+			return Ok("Kategori Ekleme İşlemi Başarılı");
 		}
 	}
 }
