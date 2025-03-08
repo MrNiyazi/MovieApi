@@ -52,5 +52,12 @@ namespace MovieApi.WebApi.Controllers
 			var value = await _getMovieByIdQueryHandler.Handle(new GetMovieByIdQuery(id));
 			return Ok(value);
 		}
+
+		[HttpPut]
+		public async Task<IActionResult> UpdateMovie(UpdateMovieCommands commands)
+		{
+			await _updateMovieCommandHandler.Handle(commands);
+			return Ok("Film güncelleme işlemi başarılı");
+		}
 	}
 }
