@@ -1,9 +1,12 @@
 using MovieApi.Application.Features.CQRSDesingPattern.Handlers.CategoryHandlers;
 using MovieApi.Application.Features.CQRSDesingPattern.Handlers.MovieHandlers;
+using MovieApi.Persistence.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<MovieContext>();
+
 builder.Services.AddScoped<GetCategoryQueryHandler>();
 builder.Services.AddScoped<GetCategoryByIdQueryHandler>();
 builder.Services.AddScoped<CreateCategoryCommandHandler>();
