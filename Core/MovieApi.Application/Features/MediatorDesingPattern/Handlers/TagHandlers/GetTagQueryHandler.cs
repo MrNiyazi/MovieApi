@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using MovieApi.Application.Features.MediatorDesingPattern.Queries.TagQueries;
 using MovieApi.Application.Features.MediatorDesingPattern.Results.TagResult;
 using MovieApi.Persistence.Context;
@@ -10,20 +11,23 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Application.Features.MediatorDesingPattern.Handlers.TagHandlers
 {
-	public class GetTagByIdQueryHandler : IRequestHandler<GetTagByIdQuery, GetTagByIdQueryResult>
+	public class GetTagQueryHandler : IRequestHandler<GetTagQuery, List<GetTagQueryResult>>
 	{
 		private readonly MovieContext _context;
-		public GetTagByIdQueryHandler(MovieContext context)
+
+		public GetTagQueryHandler(MovieContext context) 
 		{
 			_context = context;
 		}
-		public async Task<GetTagByIdQueryResult> Handle(GetTagByIdQuery request, CancellationToken cancellationToken)
+
+		public async Task<List<GetTagQueryResult>> Handle(GetTagQuery request, CancellationToken cancellationToken) 
 		{
-			var value = await _context.Casts.FindAsync(request.TagId);
-			return new GetTagByIdQueryResult
+			var values = await _context.Tags.ToListAsync();
+			return values.Select(x=> new GetTagQueryResult
 			{
-				Title = value.Title
-			};
+				TagId = x.TagId,
+				Title = x.Title,
+			}).ToList();
 		}
 	}
 }
