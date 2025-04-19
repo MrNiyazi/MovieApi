@@ -2,6 +2,7 @@ using Microsoft.OpenApi.Models;
 using MovieApi.Application.Features.CQRSDesingPattern.Handlers.CategoryHandlers;
 using MovieApi.Application.Features.CQRSDesingPattern.Handlers.MovieHandlers;
 using MovieApi.Persistence.Context;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,8 @@ builder.Services.AddScoped<GetCategoryQueryHandler>();
 builder.Services.AddScoped<CreateCategoryCommandHandler>();
 builder.Services.AddScoped<RemoveCategoryCommandHandler>();
 builder.Services.AddScoped<UpdateCategoryCommandHandler>();
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
 
 

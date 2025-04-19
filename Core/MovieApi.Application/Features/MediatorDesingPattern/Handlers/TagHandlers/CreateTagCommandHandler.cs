@@ -21,7 +21,7 @@ namespace MovieApi.Application.Features.MediatorDesingPattern.Handlers.TagHandle
 
 		public async Task Handle(CreateTagCommand request, CancellationToken cancellationToken)
 		{
-			_movieContext.Tags.Add(new Tag
+			await _movieContext.Tags.AddAsync(new Tag
 			{
 				Title = request.Title,
 			});
