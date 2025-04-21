@@ -30,7 +30,7 @@ namespace MovieApi.WebApi.Controllers
 			return Ok("Ekleme işlemi başarılı");
 		}
 
-		[HttpGet("GetTag")]
+		[HttpGet("GetTagById")]
 		public async Task<IActionResult> GetTag(int id) 
 		{
 			var value = await _mediator.Send(new GetTagByIdQuery (id));
