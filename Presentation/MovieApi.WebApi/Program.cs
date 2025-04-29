@@ -17,10 +17,10 @@ builder.Services.AddScoped<RemoveCategoryCommandHandler>();
 builder.Services.AddScoped<UpdateCategoryCommandHandler>();
 
 builder.Services.AddScoped<GetMovieByIdQueryHandler>();
-builder.Services.AddScoped<GetCategoryQueryHandler>();
-builder.Services.AddScoped<CreateCategoryCommandHandler>();
-builder.Services.AddScoped<RemoveCategoryCommandHandler>();
-builder.Services.AddScoped<UpdateCategoryCommandHandler>();
+builder.Services.AddScoped<GetMovieByIdQueryHandler>();
+builder.Services.AddScoped<CreateMovieCommandHandler>();
+builder.Services.AddScoped<UpdateMovieCommandHandler>();
+builder.Services.AddScoped<RemoveMovieCommandHandler>();
 
 //builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 

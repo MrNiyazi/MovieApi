@@ -10,16 +10,16 @@ namespace MovieApi.WebApi.Controllers
 	[ApiController]
 	public class MoviesController : ControllerBase
 	{
-		private readonly GetMovieByIdQuery _getMovieByIdQuery;
+	
 		private readonly GetMovieQueryMovieHandler _getMovieQueryMovieHandler;
 		private readonly GetMovieByIdQueryHandler _getMovieByIdQueryHandler;
-		public readonly CreateMovieCommandHandler _createMovieCommandHandler;
-		public readonly UpdateMovieCommandHandler _updateMovieCommandHandler;
-		public readonly RemoveMovieCommandHandler _removeMovieCommandHandler;
+		private readonly CreateMovieCommandHandler _createMovieCommandHandler;
+		private readonly UpdateMovieCommandHandler _updateMovieCommandHandler;
+		private readonly RemoveMovieCommandHandler _removeMovieCommandHandler;
 
-		public MoviesController(GetMovieByIdQuery getMovieByIdQuery, GetMovieQueryMovieHandler getMovieQueryMovieHandler, GetMovieByIdQueryHandler getMovieByIdQueryHandler, CreateMovieCommandHandler createMovieCommandHandler, UpdateMovieCommandHandler updateMovieCommandHandler, RemoveMovieCommandHandler removeMovieCommandHandler)
+		public MoviesController( GetMovieQueryMovieHandler getMovieQueryMovieHandler, GetMovieByIdQueryHandler getMovieByIdQueryHandler, CreateMovieCommandHandler createMovieCommandHandler, UpdateMovieCommandHandler updateMovieCommandHandler, RemoveMovieCommandHandler removeMovieCommandHandler)
 		{
-			_getMovieByIdQuery = getMovieByIdQuery;
+		
 			_getMovieQueryMovieHandler = getMovieQueryMovieHandler;
 			_getMovieByIdQueryHandler = getMovieByIdQueryHandler;
 			_createMovieCommandHandler = createMovieCommandHandler;
@@ -33,8 +33,8 @@ namespace MovieApi.WebApi.Controllers
 			var value = await _getMovieQueryMovieHandler.Handle();
 			return Ok(value);
 		}
-		[HttpPost]
 
+		[HttpPost]
 		public async Task<IActionResult> CreateMovie(CreateMovieCommands commands)
 		{
 			await _createMovieCommandHandler.Handler(commands);
