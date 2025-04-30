@@ -16,7 +16,7 @@ builder.Services.AddScoped<CreateCategoryCommandHandler>();
 builder.Services.AddScoped<RemoveCategoryCommandHandler>();
 builder.Services.AddScoped<UpdateCategoryCommandHandler>();
 
-builder.Services.AddScoped<GetMovieByIdQueryHandler>();
+builder.Services.AddScoped<GetMovieQueryMovieHandler>();
 builder.Services.AddScoped<GetMovieByIdQueryHandler>();
 builder.Services.AddScoped<CreateMovieCommandHandler>();
 builder.Services.AddScoped<UpdateMovieCommandHandler>();
