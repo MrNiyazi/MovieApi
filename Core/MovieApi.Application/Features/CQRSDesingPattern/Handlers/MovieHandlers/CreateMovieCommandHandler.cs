@@ -19,6 +19,7 @@ namespace MovieApi.Application.Features.CQRSDesingPattern.Handlers.MovieHandlers
 		{
 			_context.Movies.Add(new Movie
 			{
+				Title = command.Title,
 				CoverImgUrl = command.CoverImgUrl,
 				CreatedYear = command.CreatedYear,
 				Description = command.Description,
@@ -26,7 +27,7 @@ namespace MovieApi.Application.Features.CQRSDesingPattern.Handlers.MovieHandlers
 				Rating = command.Rating,
 				ReleaseDate = command.ReleaseDate,
 				Status = command.Status,
-				Title = command.Title,
+				
 			});
 			await _context.SaveChangesAsync();
 		}
