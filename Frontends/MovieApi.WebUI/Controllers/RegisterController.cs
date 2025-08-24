@@ -4,7 +4,13 @@ namespace MovieApi.WebUI.Controllers
 {
 	public class RegisterController : Controller
 	{
-		public IActionResult Index()
+		[HttpGet]
+		public IActionResult SingUp()
+		{
+			return View();
+		}
+		[HttpPost]
+		public IActionResult SingUp()
 		{
 			return View();
 		}
