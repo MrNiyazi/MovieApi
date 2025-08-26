@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MoviApi.Dto.Dtos.UserRegisterDtos
 {
-	internal class CreateUserRegisterDto
+	public class CreateUserRegisterDto
 	{
 	}
 }
