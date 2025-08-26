@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MoviApi.Dto.Dtos.UserRegisterDtos;
 
 namespace MovieApi.WebUI.Controllers
 {
@@ -10,9 +11,9 @@ namespace MovieApi.WebUI.Controllers
 			return View();
 		}
 		[HttpPost]
-		public IActionResult SingUp()
+		public IActionResult SingUp(CreateUserRegisterDto createUserRegisterDto)
 		{
-			return View();
+			return RedirectToAction("SingIn", "Login");
 		}
 	}
 }
